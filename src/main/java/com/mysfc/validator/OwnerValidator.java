@@ -21,7 +21,7 @@ public class OwnerValidator implements Validator {
 			errors.rejectValue("ownerName", "owner.blank");
 		}
 		if (errors.hasFieldErrors("age") == false) {
-			if (add.getAge() <= 0 || add.getAge() > 80) {
+			if (add.getAge() <= 0 || add.getAge() > 90) {
 				errors.rejectValue("age", "age.invalid");
 			}
 		}
