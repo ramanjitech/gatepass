@@ -1,0 +1,39 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<bean  class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+<property name="mappings">
+<props>
+<prop key="add-owner.htm">addOwnerFormController</prop>
+</props>
+</property>
+
+</bean>
+
+<bean id="addOwnerFormController" class="${package}.controller.AddOwnerFormController">
+<property name="formView" value="add-owner"/>
+<property name="commandName" value="addOwnerCommand" />
+<property name="commandClass" value="${package}.command.AddOwnerCommand" />
+<property name="validator" ref="ownerValodator"/>
+
+</bean>
+<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+  <property name="basename" value="errors"></property>
+</bean>
+<bean id="ownerValodator" class="${package}.validator.OwnerValidator"></bean>
+
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<property name="prefix" value="/WEB-INF/jsp/"></property>
+<property name="suffix" value=".jsp"></property>
+</bean>
+
+
+
+
+</beans>
